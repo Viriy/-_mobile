@@ -37,45 +37,25 @@
             <h1 class="f68 bold">RESET PASSWORD</h1>
             <div class="line_h bgfff radius mt52 mb"></div>
             <div class="form_wrap f24">
-                <p><label>Email Address</label><input type="email" name="" value="" placeholder="Please enter your email address"></p>
-                <p><label>Password</label><input type="password" name="" value="" placeholder="Input your Password"></p>
-                <p><label>Confirm Password</label><input type="password" name="" value="" placeholder="Input your Password"></p>
+                <p>
+                    <label>Email Address</label>
+                    <input type="email" name="" value="" placeholder="Please enter your email address">
+                </p>
+                <p>
+                    <label>Password</label>
+                    <input type="password" name="" value="" placeholder="Input your Password">
+                </p>
+                <p>
+                    <label>Confirm Password</label>
+                    <input type="password" name="" value="" placeholder="Input your Password">
+                </p>
                 <button class="radius blue bold mt110" type="submit">Submit</button>
             </div>
         </div>
-        
     </div>
     <script src="js/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(".id_input").change(function(){
-            var objUrl = getObjectURL(this.files[0]);
-            if (objUrl){
-                $('.id_text').hide();
-                $('.id_img').show();
-                $(".id_img img").attr("src", objUrl);
-                $(".id_img img").removeClass("hide");
-            }
-          });
-        function getObjectURL(file){
-            var url = null ;
-            if (window.createObjectURL!=undefined) 
-            { // basic
-              url = window.createObjectURL(file) ;
-            }
-            else if (window.URL!=undefined) 
-            {
-              // mozilla(firefox)
-              url = window.URL.createObjectURL(file) ;
-            } 
-            else if (window.webkitURL!=undefined) {
-              // webkit or chrome
-              url = window.webkitURL.createObjectURL(file) ;
-            }
-            return url;
-          }
-    </script>
-    <!-- <script src="js/mui.min.js"></script>
-    <script src="js/main.js"></script> -->
+    <script src="js/mui.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

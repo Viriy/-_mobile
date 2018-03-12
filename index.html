@@ -13,27 +13,27 @@
 </head>
 
 <body>
-        <div class="t_bg"></div>
-        <header class="t_head bluebg pr">
-            <a class="icon icon-logo white pa l0 t0" href="index.html"></a>
-            <ul class="mui-table-view pa r0 t0">
-                <li class="mui-table-view-cell mui-collapse">
-                    <a class="icon icon-menu r0 t0" href="#"></a>
-                    <div class="mui-collapse-content bluebg nav white arial f28 tc bold">
-                        <a class="active" href="">HOME</a>
-                        <a href="">COMMUNITY</a>
-                        <a href="">TEAM</a>
-                        <a href="">PARTENNERSHIPS</a>
-                        <a href="">MEDIA</a>
-                        <a href="">CONTACT</a>
-                        <a href="">Register</a>
-                        <a href="">Log in</a>
-                    </div>
-                </li>
-            </ul>
-        </header>
+	<div class="t_bg"></div>
+	<header class="t_head bluebg pr">
+		<a class="icon icon-logo white pa l0 t0" href="index.html"></a>
+		<ul class="mui-table-view pa r0 t0">
+			<li class="mui-table-view-cell mui-collapse">
+				<a class="icon icon-menu r0 t0" href="#"></a>
+				<div class="mui-collapse-content bluebg nav white arial f28 tc bold">
+					<a class="n1" href="javascript:;">HOME</a>
+					<a class="n2" href="javascript:;">COMMUNITY</a>
+					<a class="n3" href="javascript:;">TEAM</a>
+					<a class="n4" href="javascript:;">PARTENNERSHIPS</a>
+					<a class="n5" href="javascript:;">MEDIA</a>
+					<a class="n6" href="javascript:;">CONTACT</a>
+					<a href="register.html">Register</a>
+					<a href="login.html">Log in</a>
+				</div>
+			</li>
+		</ul>
+	</header>
     <div class="mui-content">
-        <div class="sec_olive tc white light_blue_arrow pr">
+        <div id="n1" class="sec_olive tc white light_blue_arrow pr">
             <h1 class="f68 bold">OLIVE</h1>
             <div class="txt f30 bold mt30">
                 <p>OLIVE is a video live platform</p>
@@ -52,7 +52,7 @@
             <a href="" class="btn f22 bgfff blue radius i mt160 bold">OLIVE WHITEPAPER</a>
             <div class="line_v bgfff pa b0"></div>
         </div>
-        <div class="sec_community bgfff blue f22 pr">
+        <div id="n2" class="sec_community bgfff blue f22 pr">
             <h2 class="tit f34 bold tc arial mb64">COMMUNITY</h2>
             <h3 class="bold mb30 f22">Reconstruct the live streaming ecological benefits distribution system</h3>
             <div class="txt_line">
@@ -71,7 +71,7 @@
             </div>
             <div class="line_v bluebg pa b0"></div>
         </div>
-        <div class="sec_team blue pr">
+        <div id="n3" class="sec_team blue pr">
             <h2 class="tit f34 bold tc arial mb64 white">TEAM</h2>
             <ul class="list_wrap tc f28">
                 <li>
@@ -92,7 +92,7 @@
             </ul>
             <div class="line_v bgfff pa b0"></div>
         </div>
-        <div class="sec_partnerships blue pr">
+        <div id="n4" class="sec_partnerships blue pr">
             <h2 class="tit f34 bold tc arial mb64">PARTNERSHIPS</h2>
             <div class="partner_list clearfix">
                 <a href=""><img src="images/brand1.jpg" alt=""></a>
@@ -106,7 +106,25 @@
             </div>
             <div class="line_v bluebg pa b0"></div>
         </div>
-        <div class="sec_contact bgfff blue">
+        <div id="n5" class="sec_media bluebg clearfix pr">
+            <h2 class="tit f34 bold tc arial mb64 white">MEDIA</h2>
+            <div class="list_wrap">
+            	<a href=""><img src="images/media1-1.jpg" alt=""></a>
+            	<a href=""><img src="images/media1-2.jpg" alt=""></a>
+            	<a href=""><img src="images/media1-3.jpg" alt=""></a>
+            	<a href=""><img src="images/media2-1.jpg" alt=""></a>
+            	<a href=""><img src="images/media2-2.jpg" alt=""></a>
+            	<a href=""><img src="images/media2-3.jpg" alt=""></a>
+            	<a href=""><img src="images/media3-1.jpg" alt=""></a>
+            	<a href=""><img src="images/media3-2.jpg" alt=""></a>
+            	<a href=""><img src="images/media3-3.jpg" alt=""></a>
+            	<a href=""><img src="images/media4-1.jpg" alt=""></a>
+            	<a href=""><img src="images/media4-2.jpg" alt=""></a>
+            	<a href=""><img src="images/media4-3.jpg" alt=""></a>
+            </div>
+            <div class="line_v bgfff pa b0"></div>
+        </div>
+        <div id="n6" class="sec_contact bgfff blue">
             <h2 class="tit f34 bold tc arial mb80">CONTACT</h2>
             <div class="ct_link" flex="main:justify">
                 <a href=""><img src="images/contact1.jpg" alt=""></a>
@@ -115,8 +133,28 @@
             </div>
         </div>
     </div>
+    <script src="js/jquery.min.js"></script>
     <script src="js/mui.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+		var nav1_top = $("#n1").offset().top;
+		var nav2_top = $("#n2").offset().top;
+        var nav3_top = $("#n3").offset().top;
+        var nav4_top = $("#n4").offset().top;
+        var nav5_top = $("#n5").offset().top;
+		var nav6_top = $("#n6").offset().top;
+		$(window).scroll(function() {
+			var scroH = $(this).scrollTop();
+		});
+
+		$(".t_head .nav a").click(function() {
+            $(".t_head .mui-table-view-cell").removeClass("mui-active");
+			var el = $(this).attr('class');
+			$('html, body').animate({
+				scrollTop: $("#" + el).offset().top -80
+			}, 300);
+		});
+	</script>
 </body>
 
 </html>

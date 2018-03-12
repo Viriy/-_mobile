@@ -48,7 +48,7 @@
                         <em class="bold">Email  address</em><span>952323967@qq.com</span>
                     </p>
                     <p>
-                        <em class="bold">Password</em><span>*********</span><a class="cyan bold ml" href="">Edit</a>
+                        <em class="bold">Password</em><span>*********</span><a class="cyan bold ml prompt_edit" href="javasctipt:;">Edit</a>
                     </p>
                     <p flex="as:auto">
                         <em class="bold">EC20 wallet Address</em>
@@ -61,13 +61,17 @@
         </div>
     </div>
     <script src="js/mui.min.js"></script>
-    <script src="layer_mobile/layer.js" type="text/javascript"></script>
+    <script src="layer_mobile/layer.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript">
-        layer.open({
-    content: '移动版和PC版不能同时存在同一页面'
-    ,btn: '我知道了'
-  });
+    layer.open({
+        content:"<h1 class='f60 blue bold'>Edit password</h1><div class='line_h bluebg radius mt52 mb50'></div><div class='form_wrap form_light f20 blue'><p><label>Old  Password</label><input type='password'name=''value=''placeholder='Please enter your old password'></p><p><label>New  Password</label><input type='password'name=''value=''placeholder='Please enter your new password'></p><p><label>Confirm Password</label><input type='password'name=''value=''placeholder='Confim your new password'></p><button class='btn_cancel radius lightbluebg white bold mt52'type='submit'>Cancle</button><button class='radius bluebg white bold mt30'type='submit'>Save</button></div><a class='btn_close pa radius' href='#'></a>",
+        shade: 'background-color: rgba(52,60,140,.8)',
+        skin:"olive"
+    });
+    mui('body').on('tap', '.btn_close,.btn_cancel', function() {
+        layer.closeAll();   //关闭弹框
+    });
     </script>
 </body>
 

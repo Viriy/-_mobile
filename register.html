@@ -44,9 +44,18 @@
             </div>
             <div class="line_h bgfff radius mt52 mb"></div>
             <div class="form_wrap f24">
-                <p><label>Email Address</label><input type="email" name="" value="" placeholder="Please enter your email address"></p>
-                <p><label>Set Password</label><input type="password" name="" value="" placeholder="Password must be  between 6-20 characters"></p>
-                <p><label>Confirm Password</label><input type="password" name="" value="" placeholder="Confirm password must be the same with password"></p>
+                <p>
+                    <label>Email Address</label>
+                    <input id="email" type="email" name="" value="" placeholder="Please enter your email address">
+                </p>
+                <p>
+                    <label>Set Password</label>
+                    <input id="pwd" type="password" name="" value="" placeholder="Password must be  between 6-20 characters">
+                </p>
+                <p>
+                    <label>Confirm Password</label>
+                    <input id="con_pwd" type="password" name="" value="" placeholder="Confirm password must be the same with password">
+                </p>
                 <p class="select_id" flex>
                     <span class="select_img">
                         <input class="id_input" type="file" accept="image/*" name="">
@@ -54,45 +63,86 @@
                     <span class="id_text flex1 f24">Photo of your ID card(Passport/Driver's license/National ID)</span>
                     <span class="id_img flex1"><img src="images/team_bg.jpg" alt=""></span>
                 </p>
-                <p><label>EC20 wallet Address</label><input type="email" name="" value="" placeholder="Please enter your EC20 wallet address"></p>
-                <label class="tc f20 agree" for="agree"><input type="checkbox" name="agree" value="" checked><i class="i i-checked"></i>I Have Agreed
-<a class="cyan pr" href="">olivecoin Terms Of Service</a></label>
-                <button class="radius blue bold" type="submit">Submit</button>
+                <p>
+                    <label>EC20 wallet Address</label>
+                    <input id="addr" type="text" name="" value="" placeholder="Please enter your EC20 wallet address">
+                </p>
+                <label class="tc f20 agree" for="agree">
+                    <input id="checkbox_p" type="checkbox" name="agree" value="" checked><i class="i i-checked"></i>I Have Agreed
+                    <a class="cyan pr" href="">olivecoin Terms Of Service</a></label>
+                <button id="submit_p" class="radius blue bold" type="submit" style="opacity:.5" disabled>Submit</button>
             </div>
             <div class="problems tc white f20 mt140">Have any problems？Contact us <a class="cyan" href="https://t.me/Olivecoin">https://t.me/Olivecoin</a></div>
         </div>
-        
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/mui.min.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript">
-        $(".id_input").change(function(){
-            var objUrl = getObjectURL(this.files[0]);
-            if (objUrl){
-                $('.id_text').hide();
-                $('.id_img').show();
-                $(".id_img img").attr("src", objUrl);
-                $(".id_img img").removeClass("hide");
+    $('#email').keyup(function() {
+        sure_info();
+    });
+    $('#pwd').keyup(function() {
+        $('#msg_p').hide();
+        sure_info();
+    });
+    $('#con_pwd').keyup(function() {
+        $('#msg_p').hide();
+        sure_info();
+    });
+    $('#addr').keyup(function() {
+        sure_info();
+    });
+    $('#checkbox_p').click(function() {
+        sure_info();
+    });
+
+    function sure_info() {
+        if ($('#email').val() != '' && $('#pwd').val() != '' && $('#con_pwd').val() != '' && $("#checkbox_p").prop("checked") && $('#addr').val() != '' && $('#img0').attr('src') != '') {
+            $('#submit_p').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
+        } else {
+            $('#submit_p').css({'opacity':'.5','cursor':''}).attr("disabled", true);
+        }
+    }
+    mui('body').on('tap', '#submit_p', function() {
+		var mail = $('#email').val();
+        if (mail != '') { //判断
+            var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+            if (!reg.test(mail)) {
+                mui.toast('Please enter a valid email address',{ duration:'long', type:'div' })
+                return false;
             }
-          });
-        function getObjectURL(file){
-            var url = null ;
-            if (window.createObjectURL!=undefined) 
-            { // basic
-              url = window.createObjectURL(file) ;
-            }
-            else if (window.URL!=undefined) 
-            {
-              // mozilla(firefox)
-              url = window.URL.createObjectURL(file) ;
-            } 
-            else if (window.webkitURL!=undefined) {
-              // webkit or chrome
-              url = window.webkitURL.createObjectURL(file) ;
-            }
-            return url;
-          }
+        } else {
+            mui.toast('Please enter a valid email address')
+        }
+        if ($('#con_pwd').val() != $('#pwd').val()) {
+            mui.toast('Different Password')   //提示密码错误
+        }
+    });
+
+    $(".id_input").change(function() {
+        var objUrl = getObjectURL(this.files[0]);
+        if (objUrl) {
+            $('.id_text').hide();
+            $('.id_img').show();
+            $(".id_img img").attr("src", objUrl);
+            $(".id_img img").removeClass("hide");
+        }
+    });
+
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) {
+            // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) {
+            // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
     </script>
 </body>
 

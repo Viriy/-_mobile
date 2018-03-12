@@ -39,23 +39,37 @@
             <div class="form_wrap f24">
                 <p>
                     <label>Email Address</label>
-                    <input type="email" name="" value="" placeholder="Please enter your email address">
+                    <input id="email" type="email" name="" value="11666272728@qq.com" disabled>
                 </p>
                 <p>
                     <label>Password</label>
-                    <input type="password" name="" value="" placeholder="Input your Password">
+                    <input id="pwd" type="password" name="" value="" placeholder="Input your Password">
                 </p>
                 <p>
                     <label>Confirm Password</label>
-                    <input type="password" name="" value="" placeholder="Input your Password">
+                    <input id="con_pwd" type="password" name="" value="" placeholder="Input your Password">
                 </p>
-                <button class="radius blue bold mt110" type="submit">Submit</button>
+                <button id="btn_submit" class="radius blue bold mt110" type="submit" style="opacity:.5" disabled>Submit</button>
             </div>
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/mui.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+    $('#pwd,#con_pwd').keyup(function() {
+        if ($('#pwd').val() != '' && $('#con_pwd').val() != '') {
+            $('#btn_submit').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
+        } else {
+            $('#btn_submit').css({'opacity':'.5','cursor':''}).attr("disabled", true);
+        }
+    });
+    mui('body').on('tap', '#btn_submit', function() {
+        if ($('#con_pwd').val() !=$('#pwd').val()) {
+            mui.toast('Different Password')
+        }
+    });
+    </script>
 </body>
 
 </html>

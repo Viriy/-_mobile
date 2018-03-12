@@ -33,24 +33,39 @@
         </ul>
     </header>
     <div class="mui-content">
-        <div class="sec_olive sec_login full_h tc white light_blue_arrow pr">
-            <h1 class="f68 bold">LOG IN</h1>
-            <div class="line_h bgfff radius mt52 mb"></div>
-            <div class="form_wrap f24">
-                <p><label>Email Address</label><input type="email" name="" value="" placeholder="Please enter your email address"></p>
-                <p><label>Password</label><input type="password" name="" value="" placeholder="Input your Password"></p>
-                <p class="mt30" flex="main:justify"><a class="cyan bold" href="">Forget password</a><a class="cyan bold" href="">Register</a></p>
-                <button class="radius blue bold mt110" type="submit">Log in</button>
+        <div class="light_blue_arrow full_h">
+            <div class="tab_link tc f24 bold arial" flex="box:mean">
+                <a href="">PAYMENT</a>
+                <a class="active" href="">PAYMENT</a>
+            </div>
+            <div class="payment_wrap personal_wrap bgfff radius10 f24 blue">
+                <div class="tc bold mb80">
+                    <h1 class="f46 mb10 bold">PERSONAL INFORMATION</h1>
+                </div>
+                <div class="txt tl mb100">
+                    <p><em class="bold">Whitelist Application status</em><span class="red">IN REVIEW<i class="icon icon-alert ml10 f22"></i></span></p>
+                    <p>
+                        <em class="bold">Email  address</em><span>952323967@qq.com</span>
+                    </p>
+                    <p>
+                        <em class="bold">Password</em><span>*********</span><a class="cyan bold ml prompt_edit" href="javasctipt:;">Edit</a>
+                    </p>
+                    <p flex="as:auto">
+                        <em class="bold">EC20 wallet Address</em>
+                        <span class="flex1">
+                        0xDeb857B9c2c2e19E5c042AD151Cd030C4E5b2B66
+                    </span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
     <script src="js/mui.min.js"></script>
     <script src="layer_mobile/layer.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript">
     layer.open({
-        content:"<div class='blue bold f28'><h1 class='f60 mb bold'>Forget password</h1><p>Enter your email below, we will email you</p><p>to Retrieve password</p></div><div class='line_h bluebg radius mt mb50'></div><div class='form_wrap form_light f20 blue tc'><p><input type='email'name=''value=''placeholder='Input your Email address'></p><button class='radius bluebg white bold mt110'type='submit'>Send email</button></div><a class='btn_close pa radius' href='#'></a>",
+        content:"<i class='i i_email mt80 mb100'></i><div class='f28 lh38 blue bold mlr-20 mb120'><p>An instruction email has been</p><p>sent to your email box.Please click the link in</p><p>the email to reset your password</p></div><a class='btn_close pa radius' href='#'></a>",
         shade: 'background-color: rgba(52,60,140,.8)',
         skin:"olive"
     });

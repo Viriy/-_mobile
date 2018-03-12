@@ -39,30 +39,52 @@
             <div class="form_wrap f24">
                 <p>
                     <label>Email Address</label>
-                    <input id="email" type="email" name="" value="" placeholder="Please enter your email address">
+                    <input type="email" name="" value="" placeholder="Please enter your email address">
                 </p>
                 <p>
                     <label>Password</label>
-                    <input id="pwd" type="password" name="" value="" placeholder="Input your Password">
+                    <input type="password" name="" value="" placeholder="Input your Password">
                 </p>
                 <p class="mt30" flex="main:justify"><a class="cyan bold" href="">Forget password</a><a class="cyan bold" href="">Register</a></p>
-                <button id="btn_login" class="radius blue bold mt110" type="submit" style="opacity:.5" disabled>Log in</button>
+                <button class="radius blue bold mt110" type="submit">Log in</button>
             </div>
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/mui.min.js"></script>
+    <script src="layer_mobile/layer.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript">
-    $('#email,#pwd').keyup(function() {
-        if ($('#email').val() != '' && $('#pwd').val() != '') {
-            $('#btn_login').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
-        } else {
-            $('#btn_login').css({'opacity':'.5','cursor':''}).attr("disabled", true);
-        }
+    layer.open({
+        content: "<div class='blue bold f28'><h1 class='f60 mb bold'>Forget password</h1><p>Enter your email below, we will email you</p><p>to Retrieve password</p></div><div class='line_h bluebg radius mt mb50'></div><div class='form_wrap form_light f20 blue tc'><p><input id='email' type='email'name=''value=''placeholder='Input your Email address'></p><button id='send_email' class='radius bluebg white bold mt110'type='submit' style='opacity:.5' disabled>Send email</button></div><a class='btn_close pa radius' href='#'></a>",
+        shade: 'background-color: rgba(52,60,140,.8)',
+        skin: "olive"
     });
-    $('#btn_login').on('click', function() {
-        mui.toast('Wrong Account or Password')
+    mui('body').on('tap', '.btn_close,.btn_cancel', function() {
+        layer.closeAll(); //关闭弹框
+    });
+    
+    if ($('#email').val() != '') {
+        $('#send_email').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
+    }
+    $('#email').keyup(function() {
+        if ($('#email').val() != '') {
+            $('#send_email').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
+        } else {
+            $('#send_email').css({'opacity':'.5','cursor':''}).attr("disabled", true);
+        }
+    })
+    mui('body').on('tap', '#send_email', function() {
+        var mail = $('#email').val();
+        if (mail != '') { //判断
+            var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+            if (!reg.test(mail)) {
+                mui.toast('Please enter a valid email address',{ duration:'long', type:'div' })
+                return false;
+            }
+        } else {
+            mui.toast('Please enter a valid email address')
+        }
     })
     </script>
 </body>

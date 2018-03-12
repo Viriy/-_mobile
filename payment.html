@@ -72,13 +72,23 @@
                 <p>your Token Allocation.</p>
             </div>
         </div>
-        <div class="form_wrap tc f20">
-            <label class="tc f20 white" for=""><input type="checkbox" name="" value="" checked><i class="i i-checked"></i>I hereby confirm that I have read and accepted the terms and conditions of the Token Sale</label>
-            <button class="radius blue bold mt70 mb156" type="submit">Submit</button>
+        <div class="form_wrap f20 tc">
+            <label id="agree_label" class="agree_label f20 white tl" for=""><input id="agree_input" type="checkbox" name="" value=""><i class="i i-checked"></i>I hereby confirm that I have read and accepted the terms and conditions of the Token Sale</label>
+            <button id="next" class="radius blue bold mt70 mb156" type="button" style="opacity:.5" disabled>Next</button>
         </div>
     </div>
+    <script src="js/jquery.min.js"></script>
     <script src="js/mui.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+    mui('body').on('tap', '#agree_label', function() {
+        if($("#agree_input").prop("checked")){
+            $('#next').css({'opacity':'.5','cursor':''}).attr("disabled", true);
+        }else{
+            $('#next').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
+        }
+    });
+    </script>
 </body>
 
 </html>

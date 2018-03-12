@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>olive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/resize.js"></script>
+    <link rel="stylesheet" href="css/mui.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="t_bg"></div>
+    <header class="t_head bluebg pr">
+        <a class="icon icon-logo white pa l0 t0" href="index.html"></a>
+        <ul class="mui-table-view pa r0 t0">
+            <li class="mui-table-view-cell mui-collapse">
+                <a class="icon icon-menu r0 t0" href="#"></a>
+                <div class="mui-collapse-content bluebg nav white arial f28 tc bold">
+                    <a class="active" href="">HOME</a>
+                    <a href="">COMMUNITY</a>
+                    <a href="">TEAM</a>
+                    <a href="">PARTENNERSHIPS</a>
+                    <a href="">MEDIA</a>
+                    <a href="">CONTACT</a>
+                    <a href="">Register</a>
+                    <a href="">Log in</a>
+                </div>
+            </li>
+        </ul>
+    </header>
+    <div class="mui-content">
+        <div class="sec_olive tc white light_blue_arrow pr">
+            <h1 class="f68 bold">JOIN OLIVECOIN</h1>
+            <div class="txt f30 bold mt30">
+                <p>NOTE:TOKEN SALE DOES</p>
+                <p>NOT ACCEPT CHINESE & US CITIZENSHIP</p>
+                <p>Focusing on the anchor and the audience,</p>
+                <p>APPLICANTS WILL NOT</p>
+                <p>BE ABLE TO UPLOAD CHINESE & US ID</p>
+            </div>
+            <div class="line_h bgfff radius mt52 mb"></div>
+            <div class="form_wrap f24">
+                <p><label>Email Address</label><input type="email" name="" value="" placeholder="Please enter your email address"></p>
+                <p><label>Set Password</label><input type="password" name="" value="" placeholder="Password must be  between 6-20 characters"></p>
+                <p><label>Confirm Password</label><input type="password" name="" value="" placeholder="Confirm password must be the same with password"></p>
+                <p class="select_id" flex>
+                    <span class="select_img">
+                        <input class="id_input" type="file" accept="image/*" name="">
+                    </span>
+                    <span class="id_text flex1 f24">Photo of your ID card(Passport/Driver's license/National ID)</span>
+                    <span class="id_img flex1"><img src="images/team_bg.jpg" alt=""></span>
+                </p>
+                <p><label>EC20 wallet Address</label><input type="email" name="" value="" placeholder="Please enter your EC20 wallet address"></p>
+                <label class="tc f20 agree" for="agree"><input type="checkbox" name="agree" value="" checked><i class="i i-checked"></i>I Have Agreed
+<a class="cyan pr" href="">olivecoin Terms Of Service</a></label>
+                <button class="radius blue bold" type="submit">Submit</button>
+            </div>
+            <div class="problems tc white f20 mt140">Have any problems？Contact us <a class="cyan" href="https://t.me/Olivecoin">https://t.me/Olivecoin</a></div>
+        </div>
+        
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+        $(".id_input").change(function(){
+            var objUrl = getObjectURL(this.files[0]);
+            if (objUrl){
+                $('.id_text').hide();
+                $('.id_img').show();
+                $(".id_img img").attr("src", objUrl);
+                $(".id_img img").removeClass("hide");
+            }
+          });
+        function getObjectURL(file){
+            var url = null ;
+            if (window.createObjectURL!=undefined) 
+            { // basic
+              url = window.createObjectURL(file) ;
+            }
+            else if (window.URL!=undefined) 
+            {
+              // mozilla(firefox)
+              url = window.URL.createObjectURL(file) ;
+            } 
+            else if (window.webkitURL!=undefined) {
+              // webkit or chrome
+              url = window.webkitURL.createObjectURL(file) ;
+            }
+            return url;
+          }
+    </script>
+</body>
+
+</html>

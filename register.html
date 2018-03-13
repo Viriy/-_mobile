@@ -59,7 +59,7 @@
                 </p>
                 <p class="select_id" flex>
                     <span class="select_img">
-                        <input class="id_input" type="file" accept="image/*" name="">
+                        <input id="id_input" class="id_input" type="file" accept="image/*" name="">
                     </span>
                     <span class="id_text flex1 f24">Photo of your ID card(Passport/Driver's license/National ID)</span>
                     <span class="id_img flex1"><img src="images/team_bg.jpg" alt=""></span>
@@ -69,7 +69,7 @@
                     <input id="addr" type="text" name="" value="" placeholder="Please enter your EC20 wallet address">
                 </p>
                 <label class="tc f20 agree" for="agree">
-                    <input id="checkbox_p" type="checkbox" name="agree" value="" checked><i class="i i-checked"></i>I Have Agreed
+                    <input id="checkbox_p" type="checkbox" name="agree" value=""><i class="i i-checked"></i>I Have Agreed
                     <a class="cyan pr" href="">olivecoin Terms Of Service</a></label>
                 <button id="submit_p" class="radius blue bold" type="submit" style="opacity:.5" disabled>Submit</button>
             </div>
@@ -91,15 +91,17 @@
         $('#msg_p').hide();
         sure_info();
     });
+    $('#id_input').change(function() {
+        sure_info();
+    });
     $('#addr').keyup(function() {
         sure_info();
     });
     $('#checkbox_p').click(function() {
         sure_info();
     });
-
     function sure_info() {
-        if ($('#email').val() != '' && $('#pwd').val() != '' && $('#con_pwd').val() != '' && $("#checkbox_p").prop("checked") && $('#addr').val() != '' && $('#img0').attr('src') != '') {
+        if ($('#email').val() != '' && $('#pwd').val() != '' && $('#con_pwd').val() != '' && $("#id_input").val() !='' && $("#checkbox_p").prop("checked") && $('#addr').val() != '' && $('#img0').attr('src') != '') {
             $('#submit_p').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
         } else {
             $('#submit_p').css({'opacity':'.5','cursor':''}).attr("disabled", true);

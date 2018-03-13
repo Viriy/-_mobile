@@ -268,7 +268,7 @@ input[type=color], input[type=date], input[type=datetime-local], input[type=date
 .layui-m-layer-olive .layui-m-layercont{padding:0.8rem 0.746667rem 0.7rem}
 .lightbluebg{background:#d5d9ff}
 
-.form_light input[type=color],.form_light input[type=date],.form_light input[type=datetime-local],.form_light input[type=datetime],.form_light input[type=email],.form_light input[type=month],.form_light input[type=number],.form_light input[type=password],.form_light input[type=search],.form_light input[type=tel],.form_light input[type=text],.form_light input[type=time],.form_light input[type=url],.form_light input[type=week],.form_light select,.form_light textarea{background: #d5d9ff;color: #fff}
+.form_light input[type=color],.form_light input[type=date],.form_light input[type=datetime-local],.form_light input[type=datetime],.form_light input[type=email],.form_light input[type=month],.form_light input[type=number],.form_light input[type=password],.form_light input[type=search],.form_light input[type=tel],.form_light input[type=text],.form_light input[type=time],.form_light input[type=url],.form_light input[type=week],.form_light select,.form_light textarea{background: #d5d9ff;color:#838fff}
 .layui-m-layer-olive .form_wrap{margin: 0}
 .layui-m-layer-olive .f28 p{line-height: 0.346667rem}
 .layui-m-layer-olive ::-webkit-input-placeholder,.layui-m-layer-olive ::-webkit-textarea-placeholder{color:#fff}.layui-m-layer-olive ::-moz-placeholder{color:#fff}.layui-m-layer-olive :-ms-input-placeholder,.layui-m-layer-olive :-ms-textarea-placeholder{color:#fff}
@@ -283,10 +283,6 @@ input[type=color], input[type=date], input[type=datetime-local], input[type=date
 
 .mui-toast-container{z-index: 33333333}
 
-.agree_label{padding-left:.5rem}
+.agree_label,.agree_label:focus{border:none;outline:none}
+.agree_label{padding-left:.5rem;background:rgba(255,255,255,0)}
 .agree_label .i-checked{position: absolute;top: 0.08rem;left:0}
-
-
-@media screen and (max-width:540px){
-	
-}

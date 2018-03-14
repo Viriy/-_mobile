@@ -21,22 +21,16 @@
             <li class="mui-table-view-cell mui-collapse">
                 <a class="icon icon-menu r0 t0" href="#"></a>
                 <div class="mui-collapse-content bluebg nav white arial f28 tc bold">
-                    <a class="active" href="">HOME</a>
-                    <a href="">COMMUNITY</a>
-                    <a href="">TEAM</a>
-                    <a href="">PARTENNERSHIPS</a>
-                    <a href="">MEDIA</a>
-                    <a href="">CONTACT</a>
-                    <a href="">Register</a>
-                    <a href="">Log in</a>
+                    <a class="active" href="index.html">Back to home</a>
+                    <a href="login.html">952323967@qq.com<i class="icon icon-exit ml f28"></i></a>
                 </div>
             </li>
         </ul>
     </header>
     <div class="mui-content">
         <div class="tab_link tc f24 bold arial" flex="box:mean">
-            <a href="">PERSONAL INFORMATION</a>
-            <a class="active" href="">PAYMENT</a>
+            <a href="personal.html">PERSONAL INFORMATION</a>
+            <a class="active" href="payment.html">PAYMENT</a>
         </div>
         <div class="payment_wrap bgfff radius10 f24 blue">
             <div class="tc bold mb80">
@@ -61,16 +55,10 @@
                 </p>
                 <p><em class="bold">Minimum Contribution</em><span>0.5 ETH</span></p>
             </div>
-            <div class="tc lh30">
-                <p>Token Sale at the moment only accept ETH.</p>
-                <p>Your wallet has to be ERC 20 compatible.Currently</p>
-                <p>there is no personal cap for</p> 
-                <p>Token Sale50% purchased OVC in this Token Sale has</p>
-                <p>lock in period until 2018.4.5Your Actual SAY to be received</p>
-                <p>will be based on your actual payment, on a</p>
-                <p>first-come-first-serve basis. Please complete</p>
-                <p>payment on time to secure</p>
-                <p>your Token Allocation.</p>
+            <div class="txt_line f24">
+                <p class="mb40">Token Sale at the moment only accept ETH. Your wallet has to be ERC 20 compatible.</p>
+                <p class="mb40">Currently there is no personal cap for Token Sale</p>
+                <p>Your Actual OVC to be received will be based on your actual payment, on a first-come-first-serve basis. Please complete payment on time to secure your Token Allocation.</p>
             </div>
         </div>
         <div class="form_wrap f20 tc">
@@ -88,6 +76,9 @@
         }else{
             $('#next').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
         }
+    });
+    mui('body').on('tap', '#next', function() {
+        window.top.location.href = 'payment_address.html';
     });
     </script>
 </body>

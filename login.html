@@ -21,14 +21,14 @@
             <li class="mui-table-view-cell mui-collapse">
                 <a class="icon icon-menu r0 t0" href="#"></a>
                 <div class="mui-collapse-content bluebg nav white arial f28 tc bold">
-                    <a class="active" href="">HOME</a>
-                    <a href="">COMMUNITY</a>
-                    <a href="">TEAM</a>
-                    <a href="">PARTENNERSHIPS</a>
-                    <a href="">MEDIA</a>
-                    <a href="">CONTACT</a>
-                    <a href="">Register</a>
-                    <a href="">Log in</a>
+                    <a href="index.html">HOME</a>
+                    <a href="index.html">COMMUNITY</a>
+                    <a href="index.html">TEAM</a>
+                    <a href="index.html">PARTENNERSHIPS</a>
+                    <a href="index.html">MEDIA</a>
+                    <a href="index.html">CONTACT</a>
+                    <a href="register.html">Register</a>
+                    <a class="active" href="login.html">Log in</a>
                 </div>
             </li>
         </ul>
@@ -46,13 +46,14 @@
                     <label>Password</label>
                     <input id="pwd" type="password" name="" value="" placeholder="Input your Password">
                 </p>
-                <p class="mt30" flex="main:justify"><a class="cyan bold" href="">Forget password</a><a class="cyan bold" href="">Register</a></p>
+                <p class="mt30" flex="main:justify"><a id="btn_forget" class="cyan bold" href="javascript:;">Forget password</a><a class="cyan bold" href="register.html">Register</a></p>
                 <button id="btn_login" class="radius blue bold mt110" type="submit" style="opacity:.5" disabled>Log in</button>
             </div>
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/mui.min.js"></script>
+    <script src="layer_mobile/layer.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript">
     $('#email,#pwd').keyup(function() {
@@ -64,6 +65,49 @@
     });
     $('#btn_login').on('click', function() {
         mui.toast('Wrong Account or Password')
+    })
+
+    mui('body').on('tap', '#btn_forget', function() {
+        layer.open({
+            content: "<div class='blue bold f28'><h1 class='f60 mb bold'>Forget password</h1><p>Enter your email below, we will email you</p><p>to Retrieve password</p></div><div class='line_h bluebg radius mt mb50'></div><div class='form_wrap form_light f20 blue tc'><p><input id='forget_email' type='email'name=''value=''placeholder='Input your Email address'></p><button id='forget_send_email' class='radius bluebg white bold mt110'type='submit' style='opacity:.5' disabled>Send email</button></div><a class='btn_close pa radius' href='#'></a>",
+            shade: 'background-color: rgba(52,60,140,.8)',
+            skin: "olive"
+        });
+        mui('body').on('tap', '.btn_close,.btn_cancel', function() {
+            layer.closeAll(); //关闭弹框
+        });
+
+        if ($('#forget_email').val() != '') {
+            $('#forget_send_email').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
+        }
+        $('#forget_email').keyup(function() {
+            if ($('#forget_email').val() != '') {
+                $('#forget_send_email').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
+            } else {
+                $('#forget_send_email').css({'opacity':'.5','cursor':''}).attr("disabled", true);
+            }
+        })
+        mui('body').on('tap', '#forget_send_email', function() {
+            var mail = $('#forget_email').val();
+            if (mail != '') { //判断
+                var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+                if (!reg.test(mail)) {
+                    mui.toast('Please enter a valid email address',{ duration:'long', type:'div' })
+                    return false;
+                }
+            } else {
+                mui.toast('Please enter a valid email address')
+            }
+
+            layer.open({
+                content: "<i class='i i_email mt80 mb100'></i><div class='f28 lh38 blue bold mlr-20 mb120'><a href=''><p>An instruction email has been</p><p>sent to your email box.Please click the link in</p><p>the email to reset your password</p></a></div><a class='btn_close pa radius' href='#'></a>",
+                shade: 'background-color: rgba(52,60,140,.8)',
+                skin: "olive"
+            });
+            mui('body').on('tap', '.btn_close,.btn_cancel', function() {
+                layer.closeAll(); //关闭弹框
+            });
+        })
     })
     </script>
 </body>

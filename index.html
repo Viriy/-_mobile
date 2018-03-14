@@ -20,15 +20,15 @@
 			<li class="mui-table-view-cell mui-collapse">
 				<a class="icon icon-menu r0 t0" href="#"></a>
 				<div class="mui-collapse-content bluebg nav white arial f28 tc bold">
-					<a class="n1" href="javascript:;">HOME</a>
-					<a class="n2" href="javascript:;">COMMUNITY</a>
-					<a class="n3" href="javascript:;">TEAM</a>
-					<a class="n4" href="javascript:;">PARTENNERSHIPS</a>
-					<a class="n5" href="javascript:;">MEDIA</a>
-					<a class="n6" href="javascript:;">CONTACT</a>
-					<a href="register.html">Register</a>
-					<a href="login.html">Log in</a>
-				</div>
+                    <a class="active n1" href="">HOME</a>
+                    <a class="n2" href="">COMMUNITY</a>
+                    <a class="n3" href="">TEAM</a>
+                    <a class="n4" href="">PARTENNERSHIPS</a>
+                    <a class="n5" href="">MEDIA</a>
+                    <a class="n6" href="">CONTACT</a>
+                    <a href="register.html">Register</a>
+                    <a href="login.html">Log in</a>
+                </div>
 			</li>
 		</ul>
 	</header>
@@ -49,7 +49,24 @@
                 <p>Dominating role in live streaming industry</p>
                 <p>Stable cash flow and financial returns</p>
             </div>
-            <a href="" class="btn f22 bgfff blue radius i mt160 bold">OLIVE WHITEPAPER</a>
+            <div class="countdown blue bgfff f22">
+                <h2 class="tit f28 bold tc arial">OLIVECOIN TOKEN<br>SALE IN</h2>
+                <div class="count">
+                    <em id="day">0</em><span>:</span><em id="hour">0</em><span>:</span><em id="minute">0</em><span>:</span><em id="second">0</em>
+                </div>
+                <div class="txt tl">
+                    <p><em class="bold">MAX NUMBER OF TOKENS</em><span>10,000,000,000OVC</span></p>
+                    <p>
+                        <em class="bold">TOKEN RATE</em><span>1ETH = 80,000OVC</span>
+                    </p>
+                    <p>
+                        <em></em><span>1USD = 100OVC</span>
+                    </p>
+                    <p><em class="bold">MAX CAP</em><span>31250 ETH</span></p>
+                    <p><em class="bold">CURRENCY  ACCEPTED</em><span>ETH 、USD</span></p>
+                </div>
+            </div>
+            <a href="" class="btn f22 bgfff blue radius i mt80 bold">OLIVE WHITEPAPER</a>
             <div class="line_v bgfff pa b0"></div>
         </div>
         <div id="n2" class="sec_community bgfff blue f22 pr">
@@ -57,7 +74,7 @@
             <h3 class="bold mb30 f22">Reconstruct the live streaming ecological benefits distribution system</h3>
             <div class="txt_line">
                 <p>Encrypted digital coins - "OVC"</p>
-                <p></i>Fans / audiences’ poker directly rewarded to the channel hosts</p>
+                <p>Fans / audiences’ poker directly rewarded to the channel hosts</p>
                 <p class="mb">Big data trading between brokerage company and channel hosts based on PoV</p>
                 <p>Two-way choice between channel hosts and advertisers</p>
             </div>
@@ -127,9 +144,9 @@
         <div id="n6" class="sec_contact bgfff blue">
             <h2 class="tit f34 bold tc arial mb80">CONTACT</h2>
             <div class="ct_link" flex="main:justify">
-                <a href=""><img src="images/contact1.jpg" alt=""></a>
-                <a href=""><img src="images/contact2.jpg" alt=""></a>
-                <a href=""><img src="images/contact3.jpg" alt=""></a>
+                <a href="https://t.me/OliveCoinOfficial"><img src="images/contact1.jpg" alt=""></a>
+                <a href="https://twitter.com/OliveCoin"><img src="images/contact2.jpg" alt=""></a>
+                <a href="mailto:official@olivecoin.co"><img src="images/contact3.jpg" alt=""></a>
             </div>
         </div>
     </div>
@@ -154,6 +171,37 @@
 				scrollTop: $("#" + el).offset().top -80
 			}, 300);
 		});
+
+        //倒计时
+        function timer(intDiff) {
+            window.setInterval(function () {
+                var day = 0,
+                        hour = 0,
+                        minute = 0,
+                        second = 0; //时间默认值
+                if (intDiff > 0) {
+                    day = Math.floor(intDiff / (60 * 60 * 24));
+                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                }
+                if (minute <= 9) minute = '0' + minute;
+                if (second <= 9) second = '0' + second;
+                $('#day').html(day);
+                $('#hour').html(hour);
+                $('#minute').html(minute);
+                $('#second').html(second);
+                intDiff--;
+                if(intDiff<='0'){
+                    $(".countdown").fadeOut()
+                }
+            }, 1000);
+        }
+        var time_start = new Date().getTime(); //设定当前时间
+        var time_end =  new Date("2018/3/20 12:00:00").getTime(); //设定目标时间
+        // 计算时间差
+        var intDiff = Math.floor((time_end - time_start)/(1000));//倒计时总秒数量
+        timer(intDiff);
 	</script>
 </body>
 

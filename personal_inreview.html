@@ -21,22 +21,16 @@
             <li class="mui-table-view-cell mui-collapse">
                 <a class="icon icon-menu r0 t0" href="#"></a>
                 <div class="mui-collapse-content bluebg nav white arial f28 tc bold">
-                    <a class="active" href="">HOME</a>
-                    <a href="">COMMUNITY</a>
-                    <a href="">TEAM</a>
-                    <a href="">PARTENNERSHIPS</a>
-                    <a href="">MEDIA</a>
-                    <a href="">CONTACT</a>
-                    <a href="">Register</a>
-                    <a href="">Log in</a>
+                    <a class="active" href="index.html">Back to home</a>
+                    <a href="login.html">952323967@qq.com<i class="icon icon-exit ml f28"></i></a>
                 </div>
             </li>
         </ul>
     </header>
     <div class="mui-content">
         <div class="tab_link tc f24 bold arial" flex="box:mean">
-            <a href="">PAYMENT</a>
-            <a class="active" href="">PAYMENT</a>
+            <a href="personal.html">PERSONAL INFORMATION</a>
+            <a class="active" href="payment.html">PAYMENT</a>
         </div>
         <div class="payment_wrap personal_wrap bgfff radius10 f24 blue">
             <div class="tc bold mb80">
@@ -48,7 +42,7 @@
                     <em class="bold">Email  address</em><span>952323967@qq.com</span>
                 </p>
                 <p>
-                    <em class="bold">Password</em><span>*********</span><a class="cyan bold ml" href="">Edit</a>
+                    <em class="bold">Password</em><span>*********</span><a id="btn_edit" class="cyan bold ml" href="javascript:;">Edit</a>
                 </p>
                 <p flex="as:auto">
                     <em class="bold">EC20 wallet Address</em>
@@ -59,8 +53,40 @@
             </div>
         </div>
     </div>
+    <script src="js/jquery.min.js"></script>
     <script src="js/mui.min.js"></script>
+    <script src="layer_mobile/layer.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+    mui('body').on('tap', '#btn_edit', function() {
+        layer.open({
+            content:"<h1 class='f60 blue bold'>Edit password</h1><div class='line_h bluebg radius mt30 mb40'></div><div class='form_wrap form_light f20 blue'><p><label>Old  Password</label><input id='old_pwd' type='password'name=''value=''placeholder='Please enter your old password'></p><p><label>New  Password</label><input id='pwd' type='password'name=''value=''placeholder='Please enter your new password'></p><p><label>Confirm Password</label><input id='con_pwd' type='password'name=''value=''placeholder='Confim your new password'></p><button class='btn_cancel radius lightbluebg white bold mt52'type='submit'>Cancle</button><button id='btn_save' class='radius bluebg white bold mt30'type='submit' style='opacity:.5' disabled>Save</button></div><a class='btn_close pa radius' href='#'></a>",
+            shade: 'background-color: rgba(52,60,140,.8)',
+            skin:"olive"
+        });
+        mui('body').on('tap', '.btn_close,.btn_cancel', function() {
+            layer.closeAll();   //关闭弹框
+        });
+
+        if($('#old_pwd').val()!=''&&$('#pwd').val()!=''&&$('#con_pwd').val()!=''){
+            $('#btn_save').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
+        }
+        $('#con_pwd,#pwd,#old_pwd').keyup(function(){
+            if($('#old_pwd').val()!=''&&$('#pwd').val()!=''&&$('#con_pwd').val()!=''){
+                $('#btn_save').css({'opacity':'1','cursor':'pointer'}).removeAttr("disabled");
+            }else{
+                $('#btn_save').css({'opacity':'.5','cursor':''}).attr("disabled", true);
+            }
+        })
+        mui('body').on('tap', '#btn_save', function() {
+            if($('#con_pwd').val()!=$('#pwd').val()){
+                mui.toast('Different Password')
+            }else{
+                mui.toast('Error Password')
+            }
+        })
+    })
+    </script>
 </body>
 
 </html>
